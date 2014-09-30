@@ -44,6 +44,9 @@ flattenSquareMatrix <- function(m) {
 corMasterList <- flattenSquareMatrix (cor.prob(adultsTrsf))
 print(head(corMasterList,10))
 
+corList <- corMasterList[order(-abs(corMasterList$cor)),]
+print(head(corList,10))
+
 corList <- corMasterList[order(corMasterList$cor),]
 selectedSub <- subset(corList, (abs(cor) > 0.2 & j == 'income'))
 bestSub <-  sapply(strsplit(as.character(selectedSub$i),'[.]'), "[", 1)
